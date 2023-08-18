@@ -1,0 +1,22 @@
+
+
+.containerMain {
+  width: 100%;
+  display: grid;
+  justify-content: stretch;
+  align-content: center;
+}
+
+.filter{
+  display: flex;
+  justify-content: center;
+  gap:2rem;
+  margin-top:3rem;
+}
+
+@media (max-width:650px){
+  .filter{
+    flex-direction: column;
+    justify-content: center;
+  }  
+}

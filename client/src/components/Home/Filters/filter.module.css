@@ -1,0 +1,22 @@
+.containerFilter{
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+.containerSelect{
+    width: 10rem;
+}
+.containerSelect option{
+    max-width: 3px;
+    max-height: 3px;
+    font-size: 0.7rem;
+}
+
+@media (max-width:650px){
+    .containerFilter {
+        flex-direction: column;
+        justify-items: center;
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}

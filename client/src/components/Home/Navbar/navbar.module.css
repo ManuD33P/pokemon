@@ -1,0 +1,34 @@
+.navContainer{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    max-width: 100%;
+    height: 5rem;
+    padding-left: 1.5rem;
+    padding-right: 3.5rem;
+    background: linear-gradient(175deg,#7a0004 2%,#e53a40 81%);
+    box-shadow: 0 6px 13px 0 rgb(0,0,0,3);
+}
+
+.navContainer img{
+    max-width: 20rem;
+    max-height: 7rem;
+}
+
+.navContainer div{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+}
+
+.navContainer div a{
+    text-decoration: none;
+    font-size: 1rem;
+    color:beige;
+    transition: all .6s ease ;
+}
+
+.navContainer div a:hover{
+    transform: scale(0.9);
+}

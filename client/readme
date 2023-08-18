@@ -1,0 +1,19 @@
+{
+  "pokemon": {
+    "name": "chuchu",
+    "height": 7,
+    "weight": 69,
+    "image": "http:localhost:300",
+    "hp": 45,
+    "attack": 49,
+    "defense": 49,
+    "speed": 45
+  },
+  "type": {
+    "id": [
+      1,
+      2,
+      3
+    ]
+  }
+}

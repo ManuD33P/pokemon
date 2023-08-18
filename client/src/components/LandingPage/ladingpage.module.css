@@ -1,0 +1,53 @@
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:  url('../../utils/pokemon_14.jpg');
+    /* center center cover no-repeat fixed; */
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+   
+}
+.container section{
+    background-size:contain;
+    background-repeat: no-repeat;
+    width: 40rem;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container section button{
+    margin-top: 20rem;
+    border: 0;
+    background-color: transparent;
+    color:black;
+    box-shadow: 0 0 13px 4px rgb(0,0,0,3);
+    font-size: 2rem;
+    font-family:monospace;
+    font-weight: 900;
+}
+
+.container section button:hover {
+    font-size: 3.2rem;
+    box-shadow: 0 0 13px 4px rgb(255,0,0,3);
+    cursor: pointer;
+}
+
+.container section button a{
+    text-decoration: none;
+    color: black;
+}
+
+@media only screen and (max-width: 767px) {
+    .container{
+
+        background-image: url('../../utils/pokemon_14_device.jpg');
+    }
+}
