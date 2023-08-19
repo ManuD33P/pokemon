@@ -4,7 +4,9 @@ function formartPokemonImagen(sprites) {
 
 function formatPokemonBuilder(data) {
   try {
-    const { id, name, sprites, height, stats, weight,types } = data;
+    //https://pokeapi.co/api/v2/type/1/
+    const regex = /type\/(\d+)\//
+    const { id, name, sprites, height, stats, weight,types} = data;
     const image = formartPokemonImagen(sprites);
     const hp = stats.find((pokemon) => pokemon.stat.name === "hp")?.base_stat;
     const attack =
@@ -15,8 +17,14 @@ function formatPokemonBuilder(data) {
       "unknown";
     const speed =
       stats.find((pokemon) => pokemon.stat.name === "speed")?.base_stat ??
-      "unknown";
-    const newTypes = types.map(({type}) => type.name);
+      "unknown"; 
+    const newTypes = types.map(({type}) => {
+       const id = type.url.match(regex)[1]
+        return {
+          id : parseInt(id),
+          name : type.name
+        }
+    } );
 
     return {
       id,
@@ -28,7 +36,7 @@ function formatPokemonBuilder(data) {
       attack,
       defense,
       speed,
-      newTypes
+      types:newTypes
     };
   } catch (error) {
     return error;

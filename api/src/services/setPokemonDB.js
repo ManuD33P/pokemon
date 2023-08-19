@@ -5,6 +5,7 @@ async function setPokemon(pokemon,typeId) {
     const newPokemon = await Pokemon.create(pokemon);
     const newType  = await Promise.all(typeId.map( async (id) => await Type.findByPk(id)));
     
+    console.log(newType)
     newType.forEach(async (type)=>{
       await newPokemon.addType(type);
     });

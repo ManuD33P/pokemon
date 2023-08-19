@@ -1,7 +1,6 @@
 const { httpRequest } = require("../services/httpRequest");
 const {
   URL_API_NAME_AND_ID,
-  URL_API_ALL,
   URL_API_TYPE,
 } = require("../constantes/index");
 const { setPokemon, setPokemonType } = require("../services/setPokemonDB");
@@ -12,7 +11,7 @@ const {
 } = require("../services/getPokemonDB");
 const { formatPokemonBuilder } = require("../services/formatPokemonDB");
 const builderTypes = require("../services/BuilderTypes");
-
+const getPokemonApi = require("../services/getPokemonApi");
 
 
 /* funciones de rutas que controlan todo lo referido a los pokemons, y sus tipos,
@@ -23,24 +22,27 @@ const builderTypes = require("../services/BuilderTypes");
 async function getPokemon(req, res) {
   try {
     let params;
-    if (req.params.hasOwnProperty("id")) params = parseInt(req.params.id)
-    if (req.query.hasOwnProperty("name")) params = req.query.name;
-    
-    let data = await httpRequest(`${URL_API_NAME_AND_ID}${params}`);
-    
-    if(data?.message){
+    let data  
+    if (req.params.hasOwnProperty("id")){
+      params = req.params.id
+      data = await httpRequest(`${URL_API_NAME_AND_ID}${params}`);
+      if(data?.message){
+        data = await getPokemonByIdDB(params);
+        return res.status(200).json(data)
+      } 
+    } 
+      
+    if (req.query.hasOwnProperty("name")){
+      params = req.query.name;
+      data = await httpRequest(`${URL_API_NAME_AND_ID}${params}`);
+      if(data?.message) {
+        data = await getPokemonByNameDB(params)
+        return res.status(200).json(data)
+      }
+    } 
   
-       if(typeof params === 'string') data = await getPokemonByNameDB(params)
-       else data = await getPokemonByIdDB(params);
-
-       if(data?.message) throw Error({"message": "Pokemon not found"});
-
-       return res.status(200).json(data)
-    }
-   
-
+    if(data?.message) throw Error({"message": "Pokemon not found"});
     const pokemon = formatPokemonBuilder(data);
-
     res.status(200).json(pokemon);
   } catch (error) {
     res.status(404).json(error.message);
@@ -49,10 +51,11 @@ async function getPokemon(req, res) {
 
 async function getAllPokemon(req, res) {
   try {
-    const data = await httpRequest(URL_API_ALL);
+    const data = await getPokemonApi();
     const pokemons = await Promise.all(
-      data.results.map(async (pokemon) => {
+      data.map(async (pokemon) => {
         const data = await httpRequest(pokemon.url);
+        console.log(data)
         const newData = await formatPokemonBuilder(data);
         return newData;
       })

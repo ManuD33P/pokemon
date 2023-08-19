@@ -1,7 +1,7 @@
 
  const URL_API_NAME_AND_ID = 'https://pokeapi.co/api/v2/pokemon/';
  const URL_API_TYPE = 'https://pokeapi.co/api/v2/type';
- const URL_API_ALL = 'https://pokeapi.co/api/v2/pokemon?&limit=200';
+ const URL_API_ALL = 'https://pokeapi.co/api/v2/pokemon';
 
 
 

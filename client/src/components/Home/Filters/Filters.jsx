@@ -1,16 +1,8 @@
-import { useEffect,useState } from "react"
 import styled from "./filter.module.css"
-import axios from "axios"
-import  {POKEMON_TYPES} from "../../../constantes/apiUrl"
+import useGetTypes from "../../../hooks/useGetTypes"
 function Filters(){
-const [types,setTypes] = useState([]);
 
- useEffect(()=>{
-    axios(POKEMON_TYPES)
-    .then(response => response.data)
-    .then(data => setTypes(data))
- },[])
-
+const types = useGetTypes()
     return (
         <>
             <div className={styled.containerFilter}>

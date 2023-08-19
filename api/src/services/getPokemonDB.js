@@ -6,7 +6,7 @@ async function getPokemonAllDB() {
       include:[
         {
           model:Type,
-          attributes:["name"],
+          attributes:["name","id"],
           through: { attributes: [] }
         }
       ]

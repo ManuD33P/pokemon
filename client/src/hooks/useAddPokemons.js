@@ -1,15 +1,18 @@
-import axios from "axios";
 import { ALL_POKEMON_AND_CREATE } from "../constantes/apiUrl";
 import { addPokemons } from "../redux/action-types";
 import { useDispatch } from "react-redux";
+import { getPokemons } from "../services/getPokemonsPage"
+
 function useAddPokemons() {
   const dispatch = useDispatch();
   const executeAddPokemons = async () => {
     try {
-      const { data } = await axios(ALL_POKEMON_AND_CREATE);
-      dispatch(addPokemons(data));
+      const  pokemons = await getPokemons(ALL_POKEMON_AND_CREATE);
+      dispatch(addPokemons(pokemons));
+      console.log('se ejecuto useAddPokemons')
+
     } catch (error) {
-      return alert(error.message);
+      alert(error.message);
     }
   };
   return executeAddPokemons;
