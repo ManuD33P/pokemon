@@ -1,7 +1,7 @@
 import styled from "./ladingpage.module.css"
 import { Link } from "react-router-dom"
-import useAddTypes from "../../hooks/useAddTypes"
-import useAddPokemons from "../../hooks/useAddPokemons";
+import useAddTypes from "../../hooks/Types/useAddTypes"
+import useAddPokemons from "../../hooks/Pokemons/useAddPokemons";
 import { useEffect } from "react";
 function LadingPage(){
     const executeTypes = useAddTypes(); // agrego al estado global los types

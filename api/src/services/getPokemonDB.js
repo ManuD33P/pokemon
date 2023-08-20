@@ -22,9 +22,10 @@ async function getPokemonByIdDB(id) {
   try {
 
      const data =  await Pokemon.findByPk(id)
-     if(data?.message) throw Error(data);
-  
+     if(data.length) 
      return data
+    else throw Error('pokemon not found')
+  
   } catch (error) {
     return error
   }
@@ -38,8 +39,9 @@ async function getPokemonByNameDB(name) {
         name: name,
       },
     });
-    if(pokemon?.message) throw Error(data);
+     if(pokemon.length) 
      return pokemon
+    else throw Error('pokemon not found')
   } catch (error) {
     return error
   }

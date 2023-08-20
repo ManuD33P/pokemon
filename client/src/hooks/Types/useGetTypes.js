@@ -9,7 +9,7 @@ function useGetTypes(){
     },[globalTypes])
 
 
-    console.log(types)
+
     return types
 }
 

@@ -12,6 +12,7 @@ const {
 const { formatPokemonBuilder } = require("../services/formatPokemonDB");
 const builderTypes = require("../services/BuilderTypes");
 const getPokemonApi = require("../services/getPokemonApi");
+const bachingRequestApi = require("../services/batchingRequestApi");
 
 
 /* funciones de rutas que controlan todo lo referido a los pokemons, y sus tipos,
@@ -28,6 +29,7 @@ async function getPokemon(req, res) {
       data = await httpRequest(`${URL_API_NAME_AND_ID}${params}`);
       if(data?.message){
         data = await getPokemonByIdDB(params);
+        if(data?.message) throw Error(data.message)
         return res.status(200).json(data)
       } 
     } 
@@ -37,30 +39,24 @@ async function getPokemon(req, res) {
       data = await httpRequest(`${URL_API_NAME_AND_ID}${params}`);
       if(data?.message) {
         data = await getPokemonByNameDB(params)
+        if(data?.message) throw Error(data.message);
+        
         return res.status(200).json(data)
       }
     } 
   
-    if(data?.message) throw Error({"message": "Pokemon not found"});
+    
     const pokemon = formatPokemonBuilder(data);
     res.status(200).json(pokemon);
   } catch (error) {
-    res.status(404).json(error.message);
+    res.status(404).json({message:'Pokemon not found'});
   }
 }
 
 async function getAllPokemon(req, res) {
   try {
     const data = await getPokemonApi();
-    const pokemons = await Promise.all(
-      data.map(async (pokemon) => {
-        const data = await httpRequest(pokemon.url);
-        console.log(data)
-        const newData = await formatPokemonBuilder(data);
-        return newData;
-      })
-    );
-
+    const pokemons = await bachingRequestApi(data);
     const pokemonsDB = await getPokemonAllDB();
     const allPokemons = [...pokemons, ...pokemonsDB];
 
@@ -69,6 +65,7 @@ async function getAllPokemon(req, res) {
     res.status(404).json(error.message);
   }
 }
+
 
 async function createPokemon(req, res) {
   try {

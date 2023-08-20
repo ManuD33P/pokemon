@@ -18,8 +18,8 @@ function Detail() {
   return (
     <>
       <header>
-        <Navbar/>
-        </header>    
+        <Navbar />
+      </header>
       {pokemon && (
         <main className={styled.containerDetail}>
           <header>
@@ -29,30 +29,30 @@ function Detail() {
           <section>
             <h1>{capitalizeFirstLetter(pokemon.name)}</h1>
             <div className={styled.info}>
-                <div>
-                  <h4>HP: {pokemon.hp}</h4>
-                  <progress max="100" value={pokemon.hp}></progress>
-                </div>
-                <div>
-                  <h4>Attack: {pokemon.attack}</h4>
-                  <progress max="100" value={pokemon.attack}></progress>
-                </div>
-                <div>
-                  <h4>Defense: {pokemon.defense}</h4>
-                  <progress max="100" value={pokemon.defense}></progress>
-                </div>
-                <div>
-                  <h4>Speed: {pokemon.speed}</h4>
-                  <progress max="100" value={pokemon.speed}></progress>
-                </div>
-                <div>
-                  <h4>Height: {pokemon.height}</h4>
-                  <progress max="50" value={pokemon.height}></progress>
-                </div>
-                <div>
-                  <h4>Weight: {pokemon.weight}</h4>
-                  <progress max="1500" value={pokemon.weight}></progress>
-                </div>
+              <div>
+                <h4>HP: {pokemon.hp}</h4>
+                <progress max="100" value={pokemon.hp}></progress>
+              </div>
+              <div>
+                <h4>Attack: {pokemon.attack}</h4>
+                <progress max="100" value={pokemon.attack}></progress>
+              </div>
+              <div>
+                <h4>Defense: {pokemon.defense}</h4>
+                <progress max="100" value={pokemon.defense}></progress>
+              </div>
+              <div>
+                <h4>Speed: {pokemon.speed}</h4>
+                <progress max="100" value={pokemon.speed}></progress>
+              </div>
+              <div>
+                <h4>Height: {pokemon.height}</h4>
+                <progress max="50" value={pokemon.height}></progress>
+              </div>
+              <div>
+                <h4>Weight: {pokemon.weight}</h4>
+                <progress max="1500" value={pokemon.weight}></progress>
+              </div>
             </div>
           </section>
         </main>

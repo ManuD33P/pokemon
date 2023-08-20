@@ -1,6 +1,6 @@
 import {useDispatch} from "react-redux";
-import {getTypes} from "../services/getPokemonsPage";
-import { addTypes } from "../redux/action-types";
+import {getTypes} from "../../services/getPokemonsPage";
+import { addTypes } from "../../redux/action-types";
 
  function useAddTypes(){
     const dispatch = useDispatch();

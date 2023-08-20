@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 function useGetPokemons(){
     const [pokemons, setPokemons] = useState([]);
-    const globalPokemons = useSelector(state => state.pokemons);
+    const globalPokemons = useSelector(state => state.copyPokemons);
    useEffect(()=>{
     setPokemons(globalPokemons);
     },[globalPokemons])
