@@ -2,10 +2,11 @@
 import Card from "./Card/Card"
 import Loading from "../../Loading/Loading"
 import styled from "./cards.module.css"
+import useGetPokemons from "../../../hooks/Pokemons/useGetPokemons"
 
+function Cards(){
 
-function Cards({pokemons}){
-
+const pokemons = useGetPokemons()
 
     return (
         <section className={styled.cardsContainer}>

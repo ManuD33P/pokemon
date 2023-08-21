@@ -1,11 +1,14 @@
 import styled from "./filter.module.css"
+import useFilters from "../../../hooks/Filters/useFilters"
+
 function Filters({types}){
 
+ const handleFilter = useFilters();
 
     return (
         <>
             <div className={styled.containerFilter}>
-            <select className={styled.containerSelect} name="pokemon types">
+            <select onChange={handleFilter} className={styled.containerSelect} name="type">
                 <option value="all">All types</option>
                  {
                    types.length && types.map((type)=>{
@@ -18,18 +21,18 @@ function Filters({types}){
                  }
             </select>
 
-            <select className={styled.containerSelect} name="pokemon">
-                    <option value="allPokemon">All Pokemons</option>
-                    <option value="originalPokemon">Original Pokemons</option>
-                    <option value="customPokemon">Custom Pokemons</option>
+            <select onChange={handleFilter} className={styled.containerSelect} name="origin">
+                    <option value="all">All Pokemons</option>
+                    <option value="1">Original Pokemons</option>
+                    <option value="2">Custom Pokemons</option>
             </select>
 
-            <select className={styled.containerSelect} name="Order Name">
+            <select onChange={handleFilter} className={styled.containerSelect} name="orderAlf">
                     <option value="1">A-Z</option>
                     <option value="2">Z-A</option>
             </select>
 
-            <select className={styled.containerSelect} name="Order Attack">
+            <select onChange={handleFilter} className={styled.containerSelect} name="orderStatAttack">
                 <option value="1">Highest Attack</option>
                 <option value="2">Lowest Attack</option>
             </select>

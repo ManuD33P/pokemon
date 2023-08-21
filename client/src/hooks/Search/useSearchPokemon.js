@@ -1,18 +1,19 @@
-import { useDispatch } from "react-redux";
-import {getPokemonName } from "../../redux/action-types";
+import { useState } from "react"
+// import {getPokemonName } from "../../redux/action-types";
 
 function useSearchPokemon(){
-  const dispatch  = useDispatch();
+  const [search,setSearch] = useState();
+
 
   const handleOnChange = (e) => {
-    if(e.target.value){
-      dispatch(getPokemonName(e.target.value))
-    } 
+    e.preventDefault()
+    const value = e.target.value;
+    if(value){
+      setSearch(value)
+    } else setSearch(null)
   }
   
   const handleOnSubmit = (e) => {
-    e.preventDefault()
-    dispatch(getPokemonName(e.target.value))
     e.target.reset();    
   }
 
