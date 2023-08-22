@@ -1,11 +1,12 @@
-import {ADD_POKEMONS,ADD_TYPES, GET_POKEMON_NAME,FILTER_POKEMONS} from "./action-types";
+import {ADD_POKEMONS,ADD_TYPES, GET_POKEMON_NAME,FILTER_POKEMONS,CHANGE_PAGE} from "./action-types";
 
 const initialState = {
    pokemons : [],
    copyPokemons:[],
+   pokemonLength:0,
    types:[],
-   search:false,
    loading:true,
+   page:0
 }
 // pokemons = Arreglo de objetos. (id,name,types,attack,defense,image,speed,heigth,weigth)
 // types = Arreglo de objetos (id,name);
@@ -17,7 +18,8 @@ export default function reducer(state = initialState, {type,payload}){
       ...state,
       pokemons: payload,
       copyPokemons:payload,
-      loading:false,
+      pokemonLength:payload.length,
+      loading:false
       }
     
     case ADD_TYPES:{
@@ -26,16 +28,23 @@ export default function reducer(state = initialState, {type,payload}){
         types: payload
       }
     }
-    
+
     case GET_POKEMON_NAME:{
       let pokemon;
-      if(payload)
-        pokemon = state.pokemons.filter(pokemon => pokemon.name.includes(payload.trim()))
+      if(!payload.data?.message){
+        return {
+          ...state,
+          copyPokemons:[{...payload.data}]
+        }
+      }
+      else if(!payload.search) pokemon = state.pokemons
+
       else
-        pokemon = state.pokemons
+        pokemon = state.pokemons.filter(pokemon => pokemon.name.includes(payload.search.trim()))
       return {
         ...state,
-        copyPokemons:pokemon
+        copyPokemons:pokemon,
+        pokemonLength:pokemon.length
       }
     }
 
@@ -61,12 +70,21 @@ export default function reducer(state = initialState, {type,payload}){
         else if(orderStatAttack ==="2")
          pokemons.sort((a,b) => b.attack-a.attack);
        }
+       
       return {
         ...state,
-        copyPokemons : pokemons
+        copyPokemons : pokemons,
+        pokemonLength:pokemons.length
+
       }
     }
+    case CHANGE_PAGE:{
 
+      return{
+        ...state,
+        page:parseInt(payload)
+      }
+    }
     default:
         return {
             ...state

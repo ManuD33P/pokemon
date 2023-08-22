@@ -19,8 +19,12 @@ const [filters,setFilters] = useState({
 //origin 1- original api, 2- custom DB
 //type all , *- id en el estado global types.
 
+
+
 useEffect(()=>{
+
     dispatch(filterPokemons(filters))
+
 },[filters,dispatch])
 const handleFilter = (e) => {
      const prop = e.target.name;

@@ -6,17 +6,17 @@ import useGetPokemons from "../../../hooks/Pokemons/useGetPokemons"
 
 function Cards(){
 
-const pokemons = useGetPokemons()
+const {pokemons,loading} = useGetPokemons()
 
     return (
         <section className={styled.cardsContainer}>
         {
-           pokemons.length ? pokemons.map((pokemon)=>{
+         loading ? <Loading className={styled.loading}/> :  Array.isArray(pokemons) ? pokemons.map((pokemon)=>{
                return (
 
                 <Card key={pokemon.id} props={pokemon}/>
                ) 
-            }) : <Loading className={styled.loading}/>
+            }) : <p>Pokemon not found</p>
         }
         
         </section>

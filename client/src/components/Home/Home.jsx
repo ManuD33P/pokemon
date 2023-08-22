@@ -3,9 +3,10 @@ import Navbar from "./Navbar/Navbar";
 import styled from "./home.module.css";
 import SearchBar from "./SearchBar/SearchBar";
 import Filters from "./Filters/Filters";
-import useGetTypes from "../../hooks/Types/useGetTypes";
+import BarPages from "./Pages/BarPages";
+
 function Home() {
-  const types = useGetTypes();
+  
 
 
   return (
@@ -13,7 +14,10 @@ function Home() {
       <header className={styled.head}>
         <Navbar className={styled.nav} />
         <div className={styled.filter}>
-          <SearchBar /> <Filters types={types} />
+          <SearchBar /> <Filters />
+        </div>
+        <div className={styled.Pages}>
+          <BarPages />
         </div>
       </header>
 

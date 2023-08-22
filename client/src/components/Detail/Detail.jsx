@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "./detail.module.css";
 import { useParams } from "react-router-dom";
-import { POKEMON_BY_ID_AND_NAME } from "../../constantes/apiUrl";
+import { POKEMON_BY_ID } from "../../constantes/apiUrl";
 import axios from "axios";
 import capitalizeFirstLetter from "../../services/capitalizeFirstLetter";
 import Navbar from "../Home/Navbar/Navbar";
@@ -10,7 +10,7 @@ function Detail() {
   const { id } = useParams();
   const [pokemon, setPokemon] = useState();
   useEffect(() => {
-    axios(`${POKEMON_BY_ID_AND_NAME}${id}`)
+    axios(`${POKEMON_BY_ID}${id}`)
       .then((response) => response.data)
       .then((data) => setPokemon(data));
   }, [id]);

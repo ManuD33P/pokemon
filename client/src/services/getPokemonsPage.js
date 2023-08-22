@@ -1,17 +1,18 @@
 import axios from 'axios'
 import {ALL_POKEMON_AND_CREATE,POKEMON_TYPES} from '../constantes/apiUrl';
 
-export function* getPokemonsPages(pokemons,group){ // 200  20   10 iteraciones
-    try {
-        for(let i = 0; i < pokemons.length;i += group){
-            if((i + group) < pokemons.length-1)
-            yield pokemons.slice(i,i+group); // 0  20
-            else
-            return pokemons.slice(i); // 
-        }
-    } catch (error) {
-        return error
-    }
+export function getPokemonsPages(pokemons){ // 200  20   10 iteraciones
+    let pokemonGroup = [];
+    console.log(pokemons)
+    if(pokemons)
+    for(let i = 0; i < pokemons.length;i += 12){
+        if(i+12 < pokemons.length)
+        pokemonGroup.push(pokemons.slice(i,i+12))
+        else
+        pokemonGroup.push(pokemons.slice(i))
+      }
+
+      return pokemonGroup
 }
 
 // const pages = getPokemonsPages(pokemons,20) 
