@@ -1,0 +1,43 @@
+
+.backhome{
+  height: 5rem;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    width: 6rem;
+    padding: 4px;
+    padding-right: 6px;
+    border-radius: 60%;
+    background-color: rgb(214, 84, 84);
+    transform: translateX(-20rem);
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: flash;
+    animation-name: flash;
+}
+
+   @-webkit-keyframes flash {
+    0%, 50%, 100% {
+    opacity: 1;
+    }
+   25%, 75% {
+    opacity: 0;
+    }
+   }
+   @keyframes flash {
+    0%, 50%, 100% {
+    opacity: 1;
+    }
+   25%, 75% {
+    opacity: 0;
+    }
+   }
+   
+.container:hover{
+    background-color: #365da3;
+    
+}

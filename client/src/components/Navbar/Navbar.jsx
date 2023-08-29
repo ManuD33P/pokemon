@@ -1,4 +1,4 @@
-import logo from "../../../utils/pokemonlogo.png"
+import logo from "../../utils/pokemonlogo.png"
 import { Link } from "react-router-dom"
 import styled from "./navbar.module.css"
 

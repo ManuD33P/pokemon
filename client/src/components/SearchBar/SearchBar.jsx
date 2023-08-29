@@ -1,5 +1,5 @@
 import styled from "./search.module.css";
-import useSearchPokemon from "../../../hooks/Search/useSearchPokemon";
+import useSearchPokemon from "../../hooks/Search/useSearchPokemon";
 function SearchBar() {
   const {handleOnChange,handleOnSubmit} = useSearchPokemon();
   return (

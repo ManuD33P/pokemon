@@ -6,7 +6,7 @@ async function httpRequest(url) {
     const {data} = await axios(url); 
        return data;
   } catch (error) {
-    return new Error(error.message);
+    return error
   }
 }
 

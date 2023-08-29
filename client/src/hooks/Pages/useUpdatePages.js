@@ -5,11 +5,12 @@ import { useEffect, useState } from "react";
 
 function useUpdatePages(){
     const dispatch = useDispatch();
-    const [currentPage,setCurrentPage] = useState(0);
+    const [currentPage,setCurrentPage] = useState(null);
 
     const handleChangePage = (value) => setCurrentPage(value)
 
     useEffect(()=>{
+        if(currentPage !== null)
         dispatch(changePage(currentPage))
     },[currentPage,dispatch])
 

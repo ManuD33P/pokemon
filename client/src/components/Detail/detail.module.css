@@ -11,7 +11,7 @@
 .containerDetail header{
     display: flex;
     justify-content: center;
-    transform: translateY(1.5rem);
+    transform: translateY(6.5rem);
 }
 
 
@@ -32,7 +32,7 @@
     width: 40%;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 1.212);
     border-radius: 25px;
-    margin-bottom: 4rem;
+    margin-bottom: 12rem;
     align-items: center;
 }
 
@@ -55,13 +55,7 @@
     justify-content: space-evenly;
     margin-bottom: 2rem;
 }
-/* .info article{
-    width: 14rem;
-}
 
-.info h4{
-    margin-top:0.8rem;
-} */
 
 .info  {
     display: flex;
@@ -74,6 +68,12 @@
     width: 80%;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+}
+
+.info div p{
+    display: flex;
+    padding-right: 5rem;
+    gap:3px;
 }
 
 

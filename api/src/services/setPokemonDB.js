@@ -1,16 +1,20 @@
 const { Pokemon, Type } = require("../db");
 
-async function setPokemon(pokemon,typeId) {
+async function setPokemon(pokemo,typeId) {
+  
   try {
-    const newPokemon = await Pokemon.create(pokemon);
-    const newType  = await Promise.all(typeId.map( async (id) => await Type.findByPk(id)));
+    console.log('entro al try')
+    console.log(pokemo)
+    const newPokemon = await Pokemon.create(pokemo);
+    console.log(newPokemon)
+    const newType  = await Promise.all(typeId.map( async (id) => await Type.findByPk(Number(id))));
     
-    console.log(newType)
+   
     newType.forEach(async (type)=>{
       await newPokemon.addType(type);
     });
     
-    return newPokemon;
+    return {...newPokemon.dataValues,types:[...newType]};
   } catch (error) {
     return error;
   }

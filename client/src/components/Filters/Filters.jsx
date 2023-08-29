@@ -1,6 +1,6 @@
 import styled from "./filter.module.css"
-import useFilters from "../../../hooks/Filters/useFilters"
-import useGetTypes from "../../../hooks/Types/useGetTypes";
+import useFilters from "../../hooks/Filters/useFilters"
+import useGetTypes from "../../hooks/Types/useGetTypes";
 
 function Filters(){
  const types = useGetTypes();

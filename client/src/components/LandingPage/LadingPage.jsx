@@ -5,13 +5,13 @@ import useAddPokemons from "../../hooks/Pokemons/useAddPokemons";
 import { useEffect } from "react";
 function LadingPage(){
     const executeTypes = useAddTypes(); // agrego al estado global los types
-    const executePokemons = useAddPokemons(); // agrego al estado global los pokemons
+    const {executeAddPokemons} = useAddPokemons(); // agrego al estado global los pokemons
   
 useEffect(()=>{
     executeTypes() 
-    executePokemons()
+    executeAddPokemons()
     
-},[executePokemons,executeTypes])
+},[executeAddPokemons,executeTypes])
    
         
     return (<>
@@ -19,6 +19,7 @@ useEffect(()=>{
             <main className={styled.container}>
                 <section>
                     <button ><Link to='/home'>Start</Link></button>
+                    
                 </section>
             </main>
     </>)

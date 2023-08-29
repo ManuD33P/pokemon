@@ -7,19 +7,20 @@ function useGetPokemons(){
     
     const globalPokemons = useSelector(state => state.copyPokemons);
     const loading = useSelector(state => state.loading)
-    const {page} = useGetPage();
+    const retry = useSelector(state => state.retry)
+    const {ultimateUpdatePage} = useGetPage();
 
 
    useEffect(()=>{
    
     const PagePokemon = getPokemonsPages(globalPokemons)
-    if(page > PagePokemon.length)    
+    if(ultimateUpdatePage > PagePokemon.length)    
     setPokemons(PagePokemon[0]);
     else
-    setPokemons(PagePokemon[page])
+    setPokemons(PagePokemon[ultimateUpdatePage])
 
 
-    },[globalPokemons,page])
+    },[globalPokemons,ultimateUpdatePage])
 
 
   
@@ -27,7 +28,8 @@ function useGetPokemons(){
 
     return {
         pokemons,
-        loading
+        loading,
+        retry
     }
 
 }

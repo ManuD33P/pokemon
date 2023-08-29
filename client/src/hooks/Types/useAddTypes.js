@@ -9,7 +9,6 @@ import { addTypes } from "../../redux/action-types";
         try {
           const types = await getTypes();
           dispatch(addTypes(types));
-          console.log('se ejecuto useaddTypes')
 
         } catch (error) {
           alert(error.message);

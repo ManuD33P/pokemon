@@ -2,7 +2,7 @@ import { ALL_POKEMON_AND_CREATE } from "../../constantes/apiUrl";
 import { addPokemons } from "../../redux/action-types";
 import { useDispatch } from "react-redux";
 import { getPokemons } from "../../services/getPokemonsPage"
-
+import { addPokemon } from "../../redux/action-types";
 function useAddPokemons() {
   const dispatch = useDispatch();
   const executeAddPokemons = async () => {
@@ -14,7 +14,11 @@ function useAddPokemons() {
       alert(error.message);
     }
   };
-  return executeAddPokemons;
+
+  const executeAddPokemon = (pokemon) => {
+    dispatch(addPokemon(pokemon))
+  }
+  return {executeAddPokemons,executeAddPokemon};
 }
 
 export default useAddPokemons;

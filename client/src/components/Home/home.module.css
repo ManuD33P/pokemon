@@ -13,10 +13,18 @@
   gap:2rem;
   margin-top:3rem;
 }
+.footer{
+  padding-bottom: 0.1rem;
+}
 
 @media (max-width:650px){
   .filter{
-    flex-direction: column;
+     display: grid;
     justify-content: center;
-  }  
+    align-items: center;
+    justify-items: center;
+  } 
+  .filter form{
+    padding-right: 5.5rem;
+  }
 }

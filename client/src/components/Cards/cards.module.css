@@ -1,0 +1,16 @@
+.cardsContainer{
+ width: 100%;
+ height: 100%;
+ display: grid;
+ padding-left: 6rem;
+ grid-template-columns: repeat(auto-fit,minmax(250px,100px));
+ justify-content: center;
+ justify-items: center;
+ align-items: center;
+ gap:0.3rem;
+ row-gap: 2rem;
+
+}
+
+
+

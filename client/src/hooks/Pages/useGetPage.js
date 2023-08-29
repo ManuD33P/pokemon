@@ -1,21 +1,20 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+//useDispatch 
 
 
 function useGetPage() {
-  const [page,setPage] = useState(1);
-  const ultimateUpdatePage = useSelector(state => state.page)
+  // const dispatch = useDispatch()
+
+  // dispatch(action-type(valor))
+  const ultimateUpdatePage = useSelector(state => state.page) 
   const pokemonLength = useSelector(state => state.pokemonLength)
 
 
- useEffect(()=>{
-    setPage(ultimateUpdatePage)
- },[ultimateUpdatePage]);
 
 
 
-
- return  {page,pokemonLength}
+ return  {ultimateUpdatePage,pokemonLength}
 
     
 }

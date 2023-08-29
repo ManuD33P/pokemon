@@ -14,7 +14,7 @@
 
 @media (max-width:650px){
     .containerFilter {
-        flex-direction: column;
+        display: grid;
         justify-items: center;
         padding-left: 3rem;
         padding-right: 3rem;

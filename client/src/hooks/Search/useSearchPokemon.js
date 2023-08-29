@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react"
 import {getPokemonName } from "../../redux/action-types";
-import axios from "axios"
-import { POKEMON_BY_NAME } from "../../constantes/apiUrl";
 import { useDispatch } from "react-redux";
 function useSearchPokemon(){
   const [search,setSearch] = useState(null);
   const dispatch = useDispatch()
 
-  const handleOnChange = (e) => {
+  const handleOnChange =  (e) => {
     e.preventDefault()
-    const value = e.target.value;
+
+    const value =  e.target.value;
+    console.log('este es el valor de value',value)
     if(value){
-      setSearch(value)
-    } else setSearch(null)
+       setSearch(value)
+      return
+    }
+     setSearch(null)
   }
   
   const handleOnSubmit = (e) => {

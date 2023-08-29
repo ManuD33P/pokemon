@@ -20,11 +20,19 @@ async function getPokemonAllDB() {
 }
 async function getPokemonByIdDB(id) {
   try {
-
-     const data =  await Pokemon.findByPk(id)
-     if(data.length) 
-     return data
-    else throw Error('pokemon not found')
+     const data =  await Pokemon.findByPk(id,{
+      include:[
+        {
+          model:Type,
+          attributes:["name","id"],
+          through: { attributes: [] }
+        }
+      ]
+     })
+     console.log(data)
+     if(!data) 
+     throw Error('pokemon not found')  
+    else  return data
   
   } catch (error) {
     return error
@@ -38,9 +46,18 @@ async function getPokemonByNameDB(name) {
       where: {
         name: name,
       },
+      include:[
+        {
+          model:Type,
+          attributes:["name","id"],
+          through: { attributes: [] }
+        }
+      ]
     });
-     if(pokemon.length) 
-     return pokemon
+     if(pokemon.length){ 
+       return pokemon
+
+     } 
     else throw Error('pokemon not found')
   } catch (error) {
     return error

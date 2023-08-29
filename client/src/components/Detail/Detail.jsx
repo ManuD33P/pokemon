@@ -4,11 +4,12 @@ import { useParams } from "react-router-dom";
 import { POKEMON_BY_ID } from "../../constantes/apiUrl";
 import axios from "axios";
 import capitalizeFirstLetter from "../../services/capitalizeFirstLetter";
-import Navbar from "../Home/Navbar/Navbar";
+import BackHome from "../BackHome/BackHome";
 
 function Detail() {
   const { id } = useParams();
   const [pokemon, setPokemon] = useState();
+
   useEffect(() => {
     axios(`${POKEMON_BY_ID}${id}`)
       .then((response) => response.data)
@@ -17,15 +18,15 @@ function Detail() {
 
   return (
     <>
-      <header>
-        <Navbar />
-      </header>
       {pokemon && (
+
+        
+
         <main className={styled.containerDetail}>
           <header>
             <img src={pokemon.image} alt={`${pokemon.name}`} />
           </header>
-
+          <BackHome className={styled.backhome}/>
           <section>
             <h1>{capitalizeFirstLetter(pokemon.name)}</h1>
             <div className={styled.info}>
@@ -52,6 +53,10 @@ function Detail() {
               <div>
                 <h4>Weight: {pokemon.weight}</h4>
                 <progress max="1500" value={pokemon.weight}></progress>
+              </div>
+              <div>
+                <h4>Types: </h4>
+                <p>{pokemon.types.map((type)=> <span key={type.id}>{type.name}</span>)}</p>
               </div>
             </div>
           </section>

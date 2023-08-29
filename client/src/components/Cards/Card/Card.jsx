@@ -1,5 +1,5 @@
 import styled from './card.module.css'
-import capitalizeFirstLetter from '../../../../services/capitalizeFirstLetter'
+import capitalizeFirstLetter from '../../../services/capitalizeFirstLetter'
 import { Link } from 'react-router-dom'
 function Card({props}){
     const {image,name,id,types} = props

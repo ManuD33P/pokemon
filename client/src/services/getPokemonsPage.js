@@ -3,7 +3,6 @@ import {ALL_POKEMON_AND_CREATE,POKEMON_TYPES} from '../constantes/apiUrl';
 
 export function getPokemonsPages(pokemons){ // 200  20   10 iteraciones
     let pokemonGroup = [];
-    console.log(pokemons)
     if(pokemons)
     for(let i = 0; i < pokemons.length;i += 12){
         if(i+12 < pokemons.length)
@@ -15,8 +14,6 @@ export function getPokemonsPages(pokemons){ // 200  20   10 iteraciones
       return pokemonGroup
 }
 
-// const pages = getPokemonsPages(pokemons,20) 
-// pages.next().value
 
 
 export async function getPokemons(){

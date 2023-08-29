@@ -1,0 +1,37 @@
+.containerPages{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    gap: 0.7rem;
+    font-size: 10px;
+}
+
+.containerPages button{
+    font-size: 10px;
+    width: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 20px;
+    border:0;
+    filter: drop-shadow(5px 3px 5px #000000);
+    text-align: center;
+    border-radius: 50%;
+    color:#fff;
+}
+
+.containerButtonSelect{
+    background-color: #d30303;
+}
+.containerButton{
+    background-color: #365da3;
+}
+.containerPages button:hover{
+    scale:200%;
+    cursor:pointer;
+    background-color: #e53a40;
+    filter: drop-shadow(5px 3px 5px #ff0000);
+
+}

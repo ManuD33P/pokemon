@@ -1,4 +1,4 @@
-import {ADD_POKEMONS,ADD_TYPES, GET_POKEMON_NAME,FILTER_POKEMONS,CHANGE_PAGE} from "./action-types";
+import {ADD_POKEMON,ADD_POKEMONS,ADD_TYPES,RETRY_LOADING_POKEMON, GET_POKEMON_NAME,FILTER_POKEMONS,CHANGE_PAGE, LOADING_CHANGE} from "./action-types";
 
 const initialState = {
    pokemons : [],
@@ -6,6 +6,7 @@ const initialState = {
    pokemonLength:0,
    types:[],
    loading:true,
+   retry:false,
    page:0
 }
 // pokemons = Arreglo de objetos. (id,name,types,attack,defense,image,speed,heigth,weigth)
@@ -14,19 +15,35 @@ const initialState = {
 export default function reducer(state = initialState, {type,payload}){
   switch(type){
     case ADD_POKEMONS:
+       let retry = false;
+
+     if(!payload?.length) retry = true;  
       return{
       ...state,
       pokemons: payload,
       copyPokemons:payload,
       pokemonLength:payload.length,
-      loading:false
+      loading:false,
+      retry:retry
       }
-    
+    case ADD_POKEMON:
+      const newPokemons = [...state.pokemons,payload];
+     return {
+      ...state,
+      pokemons:newPokemons
+     }
     case ADD_TYPES:{
       return{
         ...state,
         types: payload
       }
+    }
+    case RETRY_LOADING_POKEMON:{
+      return {...state ,retry:payload,loading:false};
+    }
+
+    case LOADING_CHANGE:{
+      return {...state, retry:false,loading:true}
     }
 
     case GET_POKEMON_NAME:{
@@ -34,7 +51,7 @@ export default function reducer(state = initialState, {type,payload}){
       if(!payload.data?.message){
         return {
           ...state,
-          copyPokemons:[{...payload.data}]
+          copyPokemons:[...payload.data]
         }
       }
       else if(!payload.search) pokemon = state.pokemons
@@ -51,7 +68,6 @@ export default function reducer(state = initialState, {type,payload}){
     case FILTER_POKEMONS:{
       let pokemons = [...state.pokemons];
       const {type,origin,orderAlf,orderStatAttack} = payload
-      console.log(type,origin,orderAlf,orderStatAttack)
        if(pokemons){
          if(type === "all") 
           pokemons = [...state.pokemons]; 
@@ -79,7 +95,6 @@ export default function reducer(state = initialState, {type,payload}){
       }
     }
     case CHANGE_PAGE:{
-
       return{
         ...state,
         page:parseInt(payload)

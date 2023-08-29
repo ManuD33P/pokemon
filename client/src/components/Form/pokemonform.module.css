@@ -1,0 +1,107 @@
+.containerPage{
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    /* gap:5rem; */
+}
+.containerTitle{
+    display: inline-block;
+    text-align: center;
+    width: 400px;
+    margin-top: 2rem;
+    margin-bottom: .6rem;
+    color: #365da3;
+    filter:drop-shadow(3px 10px 4px rgba(19, 0, 0, 0.664));
+}
+.containerForm{
+    display: grid;
+    width: 600px;
+    grid-template-columns: 0.1fr .1fr;
+    justify-items: center;
+    border-radius: 25px;
+    justify-content: center;
+    padding:20px;
+    gap:2rem;
+    background-color: #365da3;
+}
+.containerForm input{
+    height: 2rem;
+    width: 180px;
+    border-radius: 10px;
+    padding: 5px;
+    border: 0;
+    filter:drop-shadow(3px 3px 4px rgba(255,255,255,50%));
+    color:#fff;
+    background: linear-gradient(175deg,#7a0004 2%,#e53a40 81%);
+    font-family: sans-serif;
+    font-weight: 600;
+    text-shadow: black;
+    text-align: center;
+}
+.containerForm input::placeholder{
+    color:#fff;
+}
+
+.containerForm div p{
+    color:#7a0004;
+    font-size: 15px;
+    margin-top:5px;
+    padding: 0;
+}
+
+
+
+.containerForm select{
+    height: 2rem;
+    width: 180px;
+    border-radius: 10px;
+    padding: 5px;
+    border: 0;
+    filter:drop-shadow(3px 3px 4px rgba(255,255,255,50%));
+    color:#fff;
+    background: linear-gradient(175deg,#7a0004 2%,#e53a40 81%);
+}
+
+.containerForm select option{
+    height: 2rem;
+    border-radius: 10px;
+    padding: 5px;
+    border: 0;
+    color:#fff;
+    background:rgb(122, 0, 4);
+}
+
+.containerForm button{
+    height: 2rem;
+    border-radius: 10px;
+    border: 0;
+    padding: 5px;
+    font-weight:700;
+    color:#fff;
+    background: linear-gradient(175deg,#7a0004 2%,#e53a40 81%);
+    filter:drop-shadow(3px 3px 4px rgba(0,0,0,50%));
+}
+
+.containerForm div{
+    display: grid;
+    gap:2rem
+}
+
+.containerForm button:hover{
+    transform:scale(.8);
+    background-color: #365da3;
+    color: #fff;
+}
+.containerForm .erros{
+    margin-top: 5px;
+    padding: 0;
+    gap:0;
+}
+
+.containerForm .containerSelectTypes{
+    margin-top: 5px;
+    display: flex;
+    width: 180px;
+    gap:2px;
+    flex-wrap: wrap;
+}
